@@ -1,6 +1,9 @@
 The "Anyone But Richard M Stallman" License
 ===========================================
 
+    This software is licensed under the "Anyone But Richard M Stallman"
+    (ABRMS) license, described below. No other licenses may apply.
+
 Do anything you want with this program, with the exceptions listed
 below under "EXCEPTIONS".
 
