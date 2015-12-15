@@ -1,5 +1,5 @@
 <?php
-ini_set('display_errors','on');
+
 $nik = $_POST['nik'];
 $name = $_POST['nama'];
 $blog = $_POST['blog'];
