@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors','on');
 $nik = $_POST['nik'];
 $name = $_POST['nama'];
 $blog = $_POST['blog'];
@@ -11,16 +12,13 @@ fungsi ini terbikin oleh lantip
 alias http://twitter.com/lantip.
 */
 
-header ("Content-type: image/png");
 
 
 
 
 $background = imagecreatefromjpeg("img/back.jpg");
-
 $insert = imagecreatefromgif("img/ttd.gif");
 $image_info = getImageSize($foto) ; // see EXIF for faster way
-
  switch ($image_info['mime']) {
      case 'image/gif':
          if (imagetypes() & IMG_GIF)  { // not the same as IMAGETYPE
@@ -61,9 +59,6 @@ imagesavealpha( $insert, true );
 imagecolortransparent($insert,imagecolorat($insert,0,0));
 imagecolortransparent($insert2,imagecolorat($insert2,0,0));
 
-
-
-
 $insert_x = imagesx($insert);
 $insert_y = imagesy($insert);
 
@@ -74,9 +69,8 @@ $iy = imagesy($insert2);
 $iw = 100;
 $ih = imagesy($insert2) * 100 / imagesx($insert2);
 //$lokasi = "coba";
-
 $img_dst = imagecreatetruecolor( $iw, $ih );
-imagecolortransparent($img_dst, imagecolorallocate($img_dst, 0, 0, 0));
+imagecolortransparent($img_dst, imagecolorallocatealpha($img_dst, 0, 0, 0, 0));
 imagealphablending( $img_dst, false );
 imagesavealpha( $img_dst, true );
 imagecopyresized( $img_dst, $insert2, 0, 0, 0, 0, $iw, $ih, $is, $iy );
@@ -91,6 +85,6 @@ imagefttext($background,11,0,162,272,1,"OpenSans-Regular.ttf",$upl);
 imagefttext($background,11,0,321,121,1,"OpenSans-Regular.ttf",$jk);
 
 
-
-imagepng($background,"",9);
+header ("Content-type: image/png");
+imagepng($background);
 ?>
